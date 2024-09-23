@@ -20,25 +20,9 @@ Recession periods are determined by examining monthly GDP growth data to identif
 The dataset used in this analysis contains the following columns:
 - `Time Period`: The month and year of the GDP data point.
 - `GDP Growth`: The GDP growth rate for the given month.
-## Visualizations
+### Visualizations
 
-### 1. Monthly GDP Growth with Recession Periods
-This line chart displays the monthly GDP growth of the UK. Recession periods, identified by consecutive months of negative growth, are highlighted in red.
-
-![Monthly GDP Growth](images/monthly_gdp_growth.png)
-
-```python
-# Code snippet to generate the visualization
-fig1 = go.Figure()
-fig1.add_trace(go.Scatter(x=data.index, y=data['GDP Growth'], mode='lines+markers', name='GDP Growth',
-                          line=dict(color='blue'), marker=dict(size=8)))
-for i in range(len(data)):
-    if data['Recession'].iloc[i] == 1:
-        fig1.add_shape(type="rect",
-                       x0=data.index[i-1], y0=min(data['GDP Growth'])-2, 
-                       x1=data.index[i], y1=max(data['GDP Growth'])+2,
-                       fillcolor="red", opacity=0.3, line_width=0)
-fig1.update_layout(title='UK Monthly GDP Growth (2020-2022) with Recession Periods Highlighted',
-                   xaxis_title='Time Period',
-                   yaxis_title='GDP Growth Rate (%)')
-fig1.show()
+1. **Monthly GDP Growth with Recession Periods**: A line chart showing monthly GDP growth with recession periods highlighted in red.
+2. **Quarterly GDP Growth with Recession Periods**: A bar chart displaying quarterly GDP growth, with recession and non-recession periods color-coded.
+3. **Heatmap of Monthly GDP Growth**: A heatmap visualizing monthly GDP growth rates to identify trends and patterns over time.
+4. **Recession Severity Analysis**: A scatter plot indicating the severity of recessions using marker size and color to represent different levels of economic impact.
